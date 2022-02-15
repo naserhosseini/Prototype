@@ -76,16 +76,4 @@ except mysql.connector.Error as err:
         print(err)
     quit()
 
-'''Naser=Employee()
-Naser.add(name='Naser',DOB='4/28/1980')
-Nafise=Employee()
-Nafise.add('Nafiseh','3/24/1985')
-Nafise.UpdateEmployee('2020/01/20',new_salary=3400,new_email='nafiseh@info.com')
-Naser.UpdateEmployee('2020/5/12',new_salary=2000,new_phone='888-777-6655')
-Nafise.UpdateEmployee('2020/10/15',new_salary='5500')
-bdCake=Order()
-bdCake.add(customer_id=12,date='2021/12/21',product='cake',type='8X6',quantities=1,delivery='2021/12/25')
-bdCake.add(customer_id=30,date='2020/12/21',product='cake',type='8',quantities=1,delivery='2020/12/25')
-for item in bdCake.ongoing_orders():
-    print(item)'''
 cnx.close()
