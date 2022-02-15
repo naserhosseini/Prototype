@@ -4,6 +4,16 @@ import mysql.connector
 from mysql.connector import errorcode
 
 class Update:
+    def __init__(self,file_path):
+        '''
+
+        :param file_path: the CSV file
+
+        '''
+        with open(file_path, 'r') as csv_feed:
+            data = csv.reader(csv_feed)
+        self.data=data
+
     def add_order(self,customer_id,date,product,type,quantities,delivery,status=False):
         '''
         add placed order to the SQL data base
@@ -27,10 +37,11 @@ class Update:
         _sql = 'INSERT orders ({}) VALUES ({});'.format(_col, _val)
         mycrs.execute(_sql)
         cnx.commit()
+        return
 
     def add_purchase(self,reciept_id,date,product,type,quantities,delivery,status=False):
         '''
-        add placed order to the SQL data base
+        add purchase to the SQL data base
         :customer_id:
         :param date: order date
         :param product: either cookies, or cupcakes or cakes
@@ -48,10 +59,10 @@ class Update:
         self.status=status
         _col='customer_id,date,product,type,quantities,delivery,status'
         _val='{},"{}","{}","{}",{},"{}",{}'.format(reciept_id,date,product,type,quantities,delivery,status)
-        _sql = 'INSERT orders ({}) VALUES ({});'.format(_col, _val)
+        _sql = 'INSERT inventory ({}) VALUES ({});'.format(_col, _val)
         mycrs.execute(_sql)
         cnx.commit()
-
+        return
 
 MySqldf=pd.read_csv('MySql.cfg')
 user=MySqldf['Value'][0]
