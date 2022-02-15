@@ -1,7 +1,6 @@
 import csv
 import pandas as pd
 import mysql.connector
-from datetime import datetime,timedelta
 from mysql.connector import errorcode
 
 class Update:
